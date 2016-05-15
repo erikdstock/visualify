@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+.loading-message {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 300;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.sk-spinner-rotating-plane.sk-spinner {
+  background-color: #fff;
+}
+
+.pg-loading-logo {
+	width: 400px;
+	height: auto;
+}
+
+

@@ -1,0 +1,99 @@
+<template name="Home">
+	{{#if isLoaded}}
+	<div class="home">
+			<div class="pageintro">
+				<div class="description" style="background-image: {{getBackgroundCSS}};">
+					<div class="overlayTitle">
+						<h1>Visualify</h1>
+						<div class="userImage" style="background-image: url({{getUserImage}});"></div>
+						<h3> {{userName}}</h3>
+						<i class="fa fa-arrow-circle-o-down fa-4x"></i> 
+						<h3 class="artistName">{{getBgArtist}}</h3>
+					</div>
+				</div>
+			</div>
+		<div class="section">
+			<h1>This Month</h1>
+		</div>
+		<div class="content container">
+			<div class="col-md-6">
+				<h3>Your Top Artists</h3>
+				{{#each getTop5ArtistsShort}}
+					{{> artist}}
+				{{/each}}
+			</div>
+			<div class="col-md-6">
+				<h3>Your Top Tracks</h3>
+				{{#each getTop5TracksShort}}
+					{{> track}}
+				{{/each}}
+			</div>
+		</div>
+		<div class="section">
+			<h1>This Year</h1>
+		</div>
+		<div class="content container">
+			<div class="col-md-6">
+				<h3>Your Top Artists</h3>
+				{{#each getTop5ArtistsMedium}}
+					{{> artist}}
+				{{/each}}
+			</div>
+			<div class="col-md-6">
+				<h3>Your Top Tracks</h3>
+				{{#each getTop5TracksMedium}}
+					{{> track}}
+				{{/each}}
+			</div>
+		</div>
+		<div class="section">
+			<h1>All Time</h1>
+		</div>
+		<div class="content container">
+			<div class="col-md-6">
+				<h3>Your Top Artists</h3>
+				{{#each getTop5ArtistsLong}}
+					{{> artist}}
+				{{/each}}
+			</div>
+			<div class="col-md-6">
+				<h3>Your Top Tracks</h3>
+				{{#each getTop5TracksLong}}
+					{{> track}}
+				{{/each}}
+			</div>
+			<span class="credit pull-right">A small project made by <a href="http://alexpareto.com">Alex</a></span>
+		</div>
+	</div>
+	{{else}}
+		{{> loading}}
+	{{/if}}
+</template>
+
+<template name="artist" class="artists">
+	<a href="{{getLink}}" target="_blank">
+	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
+		<div class="overlay">
+			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+		</div>
+		<div class="card-block">
+			<h3 class="card-title">{{name}}</h3>
+			<p class="card-text"></p>
+		</div>
+	</div>
+	</a>
+</template>
+
+<template name="track">
+	<a href="{{getLink}}" target="_blank">
+	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
+		<div class="overlay">
+			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+		</div>
+		<div class="card-block">
+			<h3 class="card-title">{{name}}</h3>
+			<p class="card-text">By {{getBandName}}</p>
+		</div>
+	</div>
+	</a>
+</template>

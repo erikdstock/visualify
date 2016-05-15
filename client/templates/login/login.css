@@ -1,0 +1,48 @@
+/*****************************************************************************/
+/* Login: Style */
+/*****************************************************************************/
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+html,body {
+  height:100%;
+  margin:0;
+  background-color: #ffffff;
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.login {
+	height: 100%;
+	margin: 0;
+}
+
+.logo {
+	background-image: url("/images/logo.png");
+	background-size: cover;
+	background-position: center;
+	height: 250px;
+	width: 250px;
+	display: inline-block;
+}
+
+.btn {
+	margin-top: 50px;
+}
+.pageintro2 {
+  padding-top: 5%;
+  height:100%;
+  min-height:100%;/*for mozilla*/
+  color: white;
+  background-color: #30E3CA;
+  text-align: center;
+}
+
+.pageintro2 h1 {
+	font-size: 50px;
+}
+
+.pageintro2 span {
+   position: absolute;
+   bottom: 10px;
+   right: 10px;
+}
