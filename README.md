@@ -2,8 +2,14 @@
 
 Check it out live at [visualify.xyz](http://visualify.xyz).
 
-Visualify is a web app built on Meteor.js, Bootstrap 4, and the Spotify API. After authorizing it you can view your most listened to artists and tracks from various timeframes. I built it on my flight back home from college (got to love JetBlue's free wifi).
+## About
 
-Try it out! Your top artists might even surprise you...
+Visualify is a web app built on Meteor.js, Bootstrap 4, and the Spotify API. After authorizing it users can view their most listened to artists and tracks from various timeframes in a visually attractive style.
 
-Built by [Alex](http://alexpareto.com).
+## Motivation
+
+Spotify releases information about user's listening habits once a year in December. For the rest of the year, user's have no method to keep track of their most popular artists and tracks. Visualify uses the Spotify API to grab this information and display it to users. 
+
+## Contributors
+
+Want to contribute? Start a branch and make a PR!
