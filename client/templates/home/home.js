@@ -2,6 +2,68 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
+	'click' : function() {
+
+	var template = Template.instance();
+	var relevantData = {};
+ 
+	relevantData.topShortArtistImages   = [];
+	relevantData.topMediumArtistImages  = [];
+	relevantData.topLongArtistImages    = [];
+ 
+	relevantData.topShortTrackImages    = [];
+	relevantData.topMediumTrackImages   = [];
+	relevantData.topLongTrackImages     = [];
+ 
+	relevantData.topShortArtistLinks    = [];
+	relevantData.topMediumArtistLinks   = [];
+	relevantData.topLongArtistLinks     = [];
+ 
+	relevantData.topShortTrackLinks     = [];
+	relevantData.topMediumTrackLinks    = [];
+	relevantData.topLongTrackLinks      = [];
+
+	relevantData.topShortTrackBandName  = [];
+	relevantData.topMediumTrackBandName = [];
+	relevantData.topLongTrackBandName   = [];
+
+	for(var i = 0; i < 5; i++){
+		//artist images
+		relevantData.topShortArtistImages.push(template.topShortArtists.curValue[i].images[0].url);
+		relevantData.topMediumArtistImages.push(template.topMediumArtists.curValue[i].images[0].url);
+		relevantData.topLongArtistImages.push(template.topLongArtists.curValue[i].images[0].url);
+
+		//track images
+		relevantData.topShortTrackImages.push(template.topShortTracks.curValue[i].album.images[0].url);
+		relevantData.topMediumTrackImages.push(template.topMediumTracks.curValue[i].album.images[0].url);
+		relevantData.topLongTrackImages.push(template.topLongTracks.curValue[i].album.images[0].url);
+
+		//artist links
+		relevantData.topShortArtistLinks.push(template.topShortArtists.curValue[i].external_urls.spotify);
+		relevantData.topMediumArtistLinks.push(template.topLongArtists.curValue[i].external_urls.spotify);
+		relevantData.topLongArtistLinks.push(template.topLongArtists.curValue[i].external_urls.spotify);
+
+		//track links
+		relevantData.topShortTrackLinks.push(template.topShortTracks.curValue[i].external_urls.spotify);
+		relevantData.topMediumTrackLinks.push(template.topMediumTracks.curValue[i].external_urls.spotify);
+		relevantData.topLongTrackLinks.push(template.topLongTracks.curValue[i].external_urls.spotify);
+
+		//track band names
+		relevantData.topShortTrackBandName.push(template.topShortTracks.curValue[i].artists[0].name);
+		relevantData.topMediumTrackBandName.push(template.topMediumTracks.curValue[i].artists[0].name);
+		relevantData.topLongTrackBandName.push(template.topLongTracks.curValue[i].artists[0].name);		
+	}
+
+	var bgImageNum = Math.floor((Math.random() * 11));
+
+	relevantData.bgArtist = template.topLongArtists.get()[bgImageNum].images[0].url;
+	relevantData.userName = Meteor.user().profile.display_name;
+	relevantData.userImage = Meteor.user().profile.images.url;
+	relevantData.createdAt = new Date();
+
+	var url = window.location.href + 'share/' + "databaseIdIfICanGetItToFuckingPersist";
+    var win = window.open(url, '_blank');
+  },
 });
 
 /*****************************************************************************/
@@ -120,6 +182,7 @@ Template.Home.onCreated(function () {
 	this.topMediumTracks = new ReactiveVar([]);
 	this.topLongArtists = new ReactiveVar([]);
 	this.topLongTracks = new ReactiveVar([]);
+
 	var template = this;
 	Meteor.call('getTopArtists', 'short_term', function(error,result) {
 		if(error){
