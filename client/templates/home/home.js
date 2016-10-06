@@ -4,65 +4,47 @@
 Template.Home.events({
 	'click' : function() {
 
+	//scrape some data, probably could have thought this out better but se la vi
 	var template = Template.instance();
 	var relevantData = {};
- 
-	relevantData.topShortArtistImages   = [];
-	relevantData.topMediumArtistImages  = [];
-	relevantData.topLongArtistImages    = [];
- 
-	relevantData.topShortTrackImages    = [];
-	relevantData.topMediumTrackImages   = [];
-	relevantData.topLongTrackImages     = [];
- 
-	relevantData.topShortArtistLinks    = [];
-	relevantData.topMediumArtistLinks   = [];
-	relevantData.topLongArtistLinks     = [];
- 
-	relevantData.topShortTrackLinks     = [];
-	relevantData.topMediumTrackLinks    = [];
-	relevantData.topLongTrackLinks      = [];
 
-	relevantData.topShortTrackBandName  = [];
-	relevantData.topMediumTrackBandName = [];
-	relevantData.topLongTrackBandName   = [];
+	relevantData.topShortArtists  = [];
+	relevantData.topMediumArtists = [];
+	relevantData.topLongArtists   = [];
+ 
+	relevantData.topShortTracks   = [];
+	relevantData.topMediumTracks  = [];
+	relevantData.topLongTracks    = [];
+
 
 	for(var i = 0; i < 5; i++){
-		//artist images
-		relevantData.topShortArtistImages.push(template.topShortArtists.curValue[i].images[0].url);
-		relevantData.topMediumArtistImages.push(template.topMediumArtists.curValue[i].images[0].url);
-		relevantData.topLongArtistImages.push(template.topLongArtists.curValue[i].images[0].url);
+		//artists
+		relevantData.topShortArtists.push( {image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
+		relevantData.topMediumArtists.push( {image : template.topMediumArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify} );
+		relevantData.topLongArtists.push( {image : template.topLongArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify});
 
-		//track images
-		relevantData.topShortTrackImages.push(template.topShortTracks.curValue[i].album.images[0].url);
-		relevantData.topMediumTrackImages.push(template.topMediumTracks.curValue[i].album.images[0].url);
-		relevantData.topLongTrackImages.push(template.topLongTracks.curValue[i].album.images[0].url);
-
-		//artist links
-		relevantData.topShortArtistLinks.push(template.topShortArtists.curValue[i].external_urls.spotify);
-		relevantData.topMediumArtistLinks.push(template.topLongArtists.curValue[i].external_urls.spotify);
-		relevantData.topLongArtistLinks.push(template.topLongArtists.curValue[i].external_urls.spotify);
-
-		//track links
-		relevantData.topShortTrackLinks.push(template.topShortTracks.curValue[i].external_urls.spotify);
-		relevantData.topMediumTrackLinks.push(template.topMediumTracks.curValue[i].external_urls.spotify);
-		relevantData.topLongTrackLinks.push(template.topLongTracks.curValue[i].external_urls.spotify);
-
-		//track band names
-		relevantData.topShortTrackBandName.push(template.topShortTracks.curValue[i].artists[0].name);
-		relevantData.topMediumTrackBandName.push(template.topMediumTracks.curValue[i].artists[0].name);
-		relevantData.topLongTrackBandName.push(template.topLongTracks.curValue[i].artists[0].name);		
+		relevantData.topShortTracks.push({image : template.topShortTracks.curValue[i].album.images[0].url, link : template.topShortTracks.curValue[i].external_urls.spotify, bandName : template.topShortTracks.curValue[i].artists[0].name});
+		relevantData.topMediumTracks.push({image : template.topMediumTracks.curValue[i].album.images[0].url, link : template.topMediumTracks.curValue[i].external_urls.spotify, bandName : template.topMediumTracks.curValue[i].artists[0].name});
+		relevantData.topLongTracks.push({image : template.topLongTracks.curValue[i].album.images[0].url, link : template.topLongTracks.curValue[i].external_urls.spotify, bandName : template.topLongTracks.curValue[i].artists[0].name});	
 	}
 
 	var bgImageNum = Math.floor((Math.random() * 11));
 
-	relevantData.bgArtist = template.topLongArtists.get()[bgImageNum].images[0].url;
+	relevantData.bgArtist = {};
+	relevantData.bgArtist.img = template.topLongArtists.get()[bgImageNum].images[0].url;
+	relevantData.bgArtist.name = template.topLongArtists.get()[bgImageNum].name;
 	relevantData.displayName = Meteor.user().profile.display_name;
 	relevantData.userImage = Meteor.user().profile.images.url;
 	relevantData.createdAt = new Date();
+	
+	Meteor.call('saveMusic', relevantData, function(error,result) {
+		if(error){
+			console.log(error.reason);
+			return;
+		}
+		console.log(result);
+	});
 
-	var url = window.location.href + 'Share';
- 	var win = window.open(url, '_blank');
   },
 });
 
@@ -174,6 +156,23 @@ Template.track.helpers({
 Template.Home.onCreated(function () {
 
 	Session.set("finishedLoading", false);
+
+	//load the facebook SDK
+	window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '318147065215923',
+	      xfbml      : true,
+	      version    : 'v2.8'
+	    });
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "https://connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
 
 	//make a call to templates and set up reactive variables
 	this.topShortArtists = new ReactiveVar([]);

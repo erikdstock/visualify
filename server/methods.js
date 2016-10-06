@@ -4,9 +4,11 @@
 
 //Set up Spotify API
 //var spotifyApi = new SpotifyWebApi();
-
-
 Meteor.methods({
+  'saveMusic' : function(data){
+    var _id = Shares.insert(data);
+    return _id;
+  },
   'getTopTracks': function(length) {
   	//create instance of spotify API so we can the update access token
   	var spotifyApi = new SpotifyWebApi();
