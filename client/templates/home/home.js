@@ -57,12 +57,12 @@ Template.Home.events({
 	var bgImageNum = Math.floor((Math.random() * 11));
 
 	relevantData.bgArtist = template.topLongArtists.get()[bgImageNum].images[0].url;
-	relevantData.userName = Meteor.user().profile.display_name;
+	relevantData.displayName = Meteor.user().profile.display_name;
 	relevantData.userImage = Meteor.user().profile.images.url;
 	relevantData.createdAt = new Date();
 
-	var url = window.location.href + 'share/' + "databaseIdIfICanGetItToFuckingPersist";
-    var win = window.open(url, '_blank');
+	var url = window.location.href + 'Share';
+ 	var win = window.open(url, '_blank');
   },
 });
 
