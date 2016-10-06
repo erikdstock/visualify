@@ -37,8 +37,6 @@ if(Meteor.isClient){
 					}
         }
       }, action: function () {
-      	console.log("data from router action");
-      	console.log(this.data())
       	this.render("Share");
       }
     });

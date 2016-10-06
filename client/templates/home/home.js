@@ -2,7 +2,9 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
-	'click' : function() {
+	'click #shareBtn' : function() {
+
+	Session.set("shareLoading", true);
 
 	//scrape some data, probably could have thought this out better but se la vi
 	var template = Template.instance();
@@ -19,13 +21,13 @@ Template.Home.events({
 
 	for(var i = 0; i < 5; i++){
 		//artists
-		relevantData.topShortArtists.push( {image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
-		relevantData.topMediumArtists.push( {image : template.topMediumArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify} );
-		relevantData.topLongArtists.push( {image : template.topLongArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify});
+		relevantData.topShortArtists.push( { name : template.topShortArtists.curValue[i].name, image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
+		relevantData.topMediumArtists.push( { name : template.topMediumArtists.curValue[i].name, image : template.topMediumArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify} );
+		relevantData.topLongArtists.push( { name : template.topLongArtists.curValue[i].name, image : template.topLongArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify});
 
-		relevantData.topShortTracks.push({image : template.topShortTracks.curValue[i].album.images[0].url, link : template.topShortTracks.curValue[i].external_urls.spotify, bandName : template.topShortTracks.curValue[i].artists[0].name});
-		relevantData.topMediumTracks.push({image : template.topMediumTracks.curValue[i].album.images[0].url, link : template.topMediumTracks.curValue[i].external_urls.spotify, bandName : template.topMediumTracks.curValue[i].artists[0].name});
-		relevantData.topLongTracks.push({image : template.topLongTracks.curValue[i].album.images[0].url, link : template.topLongTracks.curValue[i].external_urls.spotify, bandName : template.topLongTracks.curValue[i].artists[0].name});	
+		relevantData.topShortTracks.push({ name : template.topShortTracks.curValue[i].name, image : template.topShortTracks.curValue[i].album.images[0].url, link : template.topShortTracks.curValue[i].external_urls.spotify, bandName : template.topShortTracks.curValue[i].artists[0].name});
+		relevantData.topMediumTracks.push({ name : template.topMediumTracks.curValue[i].name, image : template.topMediumTracks.curValue[i].album.images[0].url, link : template.topMediumTracks.curValue[i].external_urls.spotify, bandName : template.topMediumTracks.curValue[i].artists[0].name});
+		relevantData.topLongTracks.push({ name : template.topLongTracks.curValue[i].name, image : template.topLongTracks.curValue[i].album.images[0].url, link : template.topLongTracks.curValue[i].external_urls.spotify, bandName : template.topLongTracks.curValue[i].artists[0].name});	
 	}
 
 	var bgImageNum = Math.floor((Math.random() * 11));
@@ -34,19 +36,24 @@ Template.Home.events({
 	relevantData.bgArtist.image = template.topLongArtists.get()[bgImageNum].images[0].url;
 	relevantData.bgArtist.name = template.topLongArtists.get()[bgImageNum].name;
 	relevantData.displayName = Meteor.user().profile.display_name;
-	relevantData.userImage = Meteor.user().profile.images.url;
+	relevantData.userImage = Meteor.user().profile.images[0].url;
 	relevantData.createdAt = new Date();
 
-	console.log(relevantData);
-	
 	Meteor.call('saveMusic', relevantData, function(error,result) {
 		if(error){
 			console.log(error.reason);
 			return;
 		}
+		console.log('result from the method');
 		console.log(result);
+		var url = window.location.href + "share/" + result;
+		FB.ui({
+		    method: 'share',
+		    display: 'popup',
+		    href: url,
+		}, function(response){});
+		Session.set('shareLoading', false);
 	});
-
   },
 });
 
@@ -108,6 +115,9 @@ Template.Home.helpers({
 		}
 		return top5;
 	},
+	shareLoading : function () {
+		return Session.get("shareLoading");
+	},
 	userName: function() {
 		return Meteor.user().profile.display_name;
 	},
@@ -156,8 +166,9 @@ Template.track.helpers({
 /* Home: Lifecycle Hooks */
 /*****************************************************************************/
 Template.Home.onCreated(function () {
-
+	Session.set("shareLoading", false);
 	Session.set("finishedLoading", false);
+	Template.instance().loadingShare = false;
 
 	//load the facebook SDK
 	window.fbAsyncInit = function() {

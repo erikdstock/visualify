@@ -1,9 +1,20 @@
 <template name="Home">
 	{{#if isLoaded}}
+
 	<div class="home">
 			<div class="pageintro">
 				<div class="description" style="background-image: {{getBackgroundCSS}};">
 					<div class="overlayTitle">
+						{{#if shareLoading}}
+							<div id="shareBtn" class="btn btn-success clearfix">
+								 loading...
+								<div class="sk-spinner sk-spinner-rotating-plane"></div>
+							</div>
+						{{else}}
+							<div id="shareBtn" class="btn btn-success clearfix">
+								Share your music
+							</div>
+						{{/if}}
 						<h1>Visualify</h1>
 						<div class="userImage" style="background-image: url({{getUserImage}});"></div>
 						<h3> {{userName}}</h3>
