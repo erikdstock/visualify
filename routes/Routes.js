@@ -22,20 +22,23 @@ if(Meteor.isClient){
         return b[0];
       },
       seo: {
-        title: function() {
-          return this.data().displayName + "\'s music";
+        title : function () {
+        	return "visualify"; 
         },
         og : {
-        	image : function () {
-        		return this.data().bgArtist;
-        	}, 
-        	description : function () {
-        		return "My top artist for this month was " + this.data().topShortTracks[0].bandName + ". I'm not too surprised.";
-        	}
+        	title : function () {
+						return this.data().displayName + '\'s music';
+					},
+					image : function () {
+						return this.data().bgArtist.image;
+					},
+					description : function () {
+						return "My top artist for this month was " + this.data().topShortTracks[0].bandName + ". I'm not too surprised.";
+					}
         }
       }, action: function () {
       	console.log("data from router action");
-      	console.log(this.data());
+      	console.log(this.data())
       	this.render("Share");
       }
     });

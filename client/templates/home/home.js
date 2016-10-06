@@ -31,7 +31,7 @@ Template.Home.events({
 	var bgImageNum = Math.floor((Math.random() * 11));
 
 	relevantData.bgArtist = {};
-	relevantData.bgArtist.img = template.topLongArtists.get()[bgImageNum].images[0].url;
+	relevantData.bgArtist.image = template.topLongArtists.get()[bgImageNum].images[0].url;
 	relevantData.bgArtist.name = template.topLongArtists.get()[bgImageNum].name;
 	relevantData.displayName = Meteor.user().profile.display_name;
 	relevantData.userImage = Meteor.user().profile.images.url;
