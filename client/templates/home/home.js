@@ -36,6 +36,8 @@ Template.Home.events({
 	relevantData.displayName = Meteor.user().profile.display_name;
 	relevantData.userImage = Meteor.user().profile.images.url;
 	relevantData.createdAt = new Date();
+
+	console.log(relevantData);
 	
 	Meteor.call('saveMusic', relevantData, function(error,result) {
 		if(error){

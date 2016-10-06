@@ -12,13 +12,13 @@ if(Meteor.isClient){
 	});
 
 	Router.route('Share/:_id', {
-	  	waitOn: function () {
-	  		return Meteor.subscribe('shares');
-	  	},
+			waitOn: function () {
+				return Meteor.subscribe('shares', this.params._id);
+			},
       data: function() {
       	var _id = this.params._id;
       	Meteor.subscribe('shares', _id);
-      	var b = Shares.find({ _id : _id }).fetch();
+      	b = Shares.find( { _id : _id } ).fetch();
         return b[0];
       },
       seo: {
@@ -30,11 +30,12 @@ if(Meteor.isClient){
         		return this.data().bgArtist;
         	}, 
         	description : function () {
-        		return "My top artist for this month was " + this.data().topShortTrackBandName[0] + ". I'm not too surprised.";
+        		return "My top artist for this month was " + this.data().topShortTracks[0].bandName + ". I'm not too surprised.";
         	}
         }
       }, action: function () {
-      	var id = this.params._id;
+      	console.log("data from router action");
+      	console.log(this.data());
       	this.render("Share");
       }
     });
