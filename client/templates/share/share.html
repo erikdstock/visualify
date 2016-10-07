@@ -1,20 +1,8 @@
-<template name="Home">
-	{{#if isLoaded}}
-
+<template name="Share">
 	<div class="home">
 			<div class="pageintro">
 				<div class="description" style="background-image: {{getBackgroundCSS}};">
 					<div class="overlayTitle">
-						{{#if shareLoading}}
-							<div id="shareBtn" class="btn btn-success clearfix">
-								 loading...
-								<div class="sk-spinner sk-spinner-rotating-plane"></div>
-							</div>
-						{{else}}
-							<div id="shareBtn" class="btn btn-success clearfix">
-								Share your music
-							</div>
-						{{/if}}
 						<h1>Visualify</h1>
 						<div class="userImage" style="background-image: url({{getUserImage}});"></div>
 						<h3> {{userName}}</h3>
@@ -30,13 +18,13 @@
 			<div class="col-md-6">
 				<h3>Your Top Artists</h3>
 				{{#each getTop5ArtistsShort}}
-					{{> artist}}
+					{{> Artistshare}}
 				{{/each}}
 			</div>
 			<div class="col-md-6">
 				<h3>Your Top Tracks</h3>
 				{{#each getTop5TracksShort}}
-					{{> track}}
+					{{> Trackshare}}
 				{{/each}}
 			</div>
 		</div>
@@ -47,13 +35,13 @@
 			<div class="col-md-6">
 				<h3>Your Top Artists</h3>
 				{{#each getTop5ArtistsMedium}}
-					{{> artist}}
+					{{> Artistshare}}
 				{{/each}}
 			</div>
 			<div class="col-md-6">
 				<h3>Your Top Tracks</h3>
 				{{#each getTop5TracksMedium}}
-					{{> track}}
+					{{> Trackshare}}
 				{{/each}}
 			</div>
 		</div>
@@ -64,26 +52,23 @@
 			<div class="col-md-6">
 				<h3>Your Top Artists</h3>
 				{{#each getTop5ArtistsLong}}
-					{{> artist}}
+					{{> Artistshare}}
 				{{/each}}
 			</div>
 			<div class="col-md-6">
 				<h3>Your Top Tracks</h3>
 				{{#each getTop5TracksLong}}
-					{{> track}}
+					{{> Trackshare}}
 				{{/each}}
 			</div>
 			<span class="credit pull-right">A small project made by <a href="http://alexpareto.com">Alex</a></span>
 		</div>
 	</div>
-	{{else}}
-		{{> loading}}
-	{{/if}}
 </template>
 
-<template name="artist" class="artists">
-	<a href="{{getLink}}" target="_blank">
-	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
+<template name="Artistshare" class="artists">
+	<a href="{{link}}" target="_blank">
+	<div class="card card-inverse" style="background-image: url({{image}}); border-color: #fff;">
 		<div class="overlay">
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
@@ -95,15 +80,15 @@
 	</a>
 </template>
 
-<template name="track">
-	<a href="{{getLink}}" target="_blank">
-	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
+<template name="Trackshare">
+	<a href="{{link}}" target="_blank">
+	<div class="card card-inverse" style="background-image: url({{image}}); border-color: #fff;">
 		<div class="overlay">
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
 		<div class="card-block">
 			<h3 class="card-title">{{name}}</h3>
-			<p class="card-text">By {{getBandName}}</p>
+			<p class="card-text">By {{bandName}}</p>
 		</div>
 	</div>
 	</a>

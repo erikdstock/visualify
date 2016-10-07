@@ -158,3 +158,9 @@ html>body .pageintro {
 		width: 150px;
 	}
 }
+
+.btn-success {
+	position: fixed;
+	right: 40px;
+	top: 15px;
+}
