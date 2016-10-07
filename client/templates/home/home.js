@@ -2,7 +2,7 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
-	'click #shareBtn' : function() {
+	'click .share-button' : function() {
 
 	Session.set("shareLoading", true);
 

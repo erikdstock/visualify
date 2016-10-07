@@ -4,6 +4,12 @@ Template.Share.onCreated(function () {
 Template.Share.onRendered(function () {
 });
 
+Template.Share.events({
+	'click .my-music-button' : function () {
+		window.location.href ="http://localhost:3000";
+	}
+});
+
 /*****************************************************************************/
 /* Share: Helpers */
 /*****************************************************************************/
@@ -41,6 +47,11 @@ Template.Share.onRendered(function () {
  	},
  	getBgArtist: function() {
  		return Template.instance().data.bgArtist.name;
+ 	},
+ 	getFirstName: function () {
+ 		var fullName = Template.instance().data.displayName;
+ 		var firstName = fullName.split(" ")[0];
+ 		return firstName;
  	}
  })
 

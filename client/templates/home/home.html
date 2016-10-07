@@ -6,13 +6,12 @@
 				<div class="description" style="background-image: {{getBackgroundCSS}};">
 					<div class="overlayTitle">
 						{{#if shareLoading}}
-							<div id="shareBtn" class="btn btn-success clearfix">
-								 loading...
+							<div class="action-button">
 								<div class="sk-spinner sk-spinner-rotating-plane"></div>
 							</div>
 						{{else}}
-							<div id="shareBtn" class="btn btn-success clearfix">
-								Share your music
+							<div class="action-button share-button">
+								Share Your Music
 							</div>
 						{{/if}}
 						<h1>Visualify</h1>
@@ -73,7 +72,8 @@
 					{{> track}}
 				{{/each}}
 			</div>
-			<span class="credit pull-right">A small project made by <a href="http://alexpareto.com">Alex</a></span>
+			<span class="credit pull-right">A small project made by <a href="http://alexpareto.com">Alex</a> 
+			and <a href="http://zacharydenham.me"> Zac</a> </span>
 		</div>
 	</div>
 	{{else}}

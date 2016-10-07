@@ -159,8 +159,31 @@ html>body .pageintro {
 	}
 }
 
-.btn-success {
+.action-button {
 	position: fixed;
-	right: 40px;
-	top: 15px;
+	right: 35px;
+	top: 4px;
+	width: 130px;
+	height: 30px;
+	border-style: solid;
+	border-radius: 3.5px;
+	border-width: .9px;
+	font-weight: bold;
+	letter-spacing: -1.5px;
+	font-size: .8em;
+	padding-top: calc(14.5px - .8em);
+	background-color: #30E3CA;
+	border-color: #FFFFFF;
+	-webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+  	transition: all .3s ease;
+	z-index: 1000;
+}
+
+.action-button:hover {
+	background-color: #FFFFFF;
+	border-color: #30E3CA;
+	border-width: .3px;
+	color: #30E3CA;
+	cursor: pointer;
 }
