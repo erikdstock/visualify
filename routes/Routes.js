@@ -2,11 +2,11 @@ if(Meteor.isClient){
 
 	Router.plugin('seo', {
 	  defaults: { 
-	  	title: "visualify",
+	  	title: "Visualify",
 	  	og: {
-	  		title: "Who Is Your Binge-Artist?",
+	  		title: "Visualify",
 	  		description: "my top artists and tracks",
-	  		image: "https://i.scdn.co/image/214b1108d830f4426cb182cf742a409d72317cf6"
+	  		image : "https://i.scdn.co/image/214b1108d830f4426cb182cf742a409d72317cf6"
 	  	}
 	  }
 	});
@@ -23,16 +23,19 @@ if(Meteor.isClient){
       },
       seo: {
         title : function () {
-        	return "visualify"; 
+        	return "Visualify"; 
         },
         og : {
+        	title : function () {
+				return "Who Is Your Binge-Artist?";
+			},
 			image : function () {
 				return this.data().data.bgArtist.image;
 			},
 			description : function () {
 				return "My top artist this month was " + this.data().data.topShortTracks[0].bandName + 
 				". Click to see the rest of " + 
-				this.data().data.displayName.slit(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify";
+				this.data().data.displayName.split(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify";
 			}
         }
       }, action: function () {
