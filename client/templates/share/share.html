@@ -3,9 +3,12 @@
 			<div class="pageintro">
 				<div class="description" style="background-image: {{getBackgroundCSS}};">
 					<div class="overlayTitle">
+						<div class="action-button my-music-button">
+							See My Top Music
+						</div>
 						<h1>Visualify</h1>
 						<div class="userImage" style="background-image: url({{getUserImage}});"></div>
-						<h3> {{userName}}</h3>
+						<h3> {{userName}} </h3>
 						<i class="fa fa-arrow-circle-o-down fa-4x"></i> 
 						<h3 class="artistName">{{getBgArtist}}</h3>
 					</div>
@@ -16,13 +19,13 @@
 		</div>
 		<div class="content container">
 			<div class="col-md-6">
-				<h3>Your Top Artists</h3>
+				<h3>{{getFirstName}}'s Top Artists</h3>
 				{{#each getTop5ArtistsShort}}
 					{{> Artistshare}}
 				{{/each}}
 			</div>
 			<div class="col-md-6">
-				<h3>Your Top Tracks</h3>
+				<h3>{{getFirstName}}'s Top Tracks</h3>
 				{{#each getTop5TracksShort}}
 					{{> Trackshare}}
 				{{/each}}
@@ -33,13 +36,13 @@
 		</div>
 		<div class="content container">
 			<div class="col-md-6">
-				<h3>Your Top Artists</h3>
+				<h3>{{getFirstName}}'s Top Artists</h3>
 				{{#each getTop5ArtistsMedium}}
 					{{> Artistshare}}
 				{{/each}}
 			</div>
 			<div class="col-md-6">
-				<h3>Your Top Tracks</h3>
+				<h3>{{getFirstName}}'s Top Tracks</h3>
 				{{#each getTop5TracksMedium}}
 					{{> Trackshare}}
 				{{/each}}
@@ -50,18 +53,19 @@
 		</div>
 		<div class="content container">
 			<div class="col-md-6">
-				<h3>Your Top Artists</h3>
+				<h3>{{getFirstName}}'s Top Artists</h3>
 				{{#each getTop5ArtistsLong}}
 					{{> Artistshare}}
 				{{/each}}
 			</div>
 			<div class="col-md-6">
-				<h3>Your Top Tracks</h3>
+				<h3>{{getFirstName}}'s Top Tracks</h3>
 				{{#each getTop5TracksLong}}
 					{{> Trackshare}}
 				{{/each}}
 			</div>
-			<span class="credit pull-right">A small project made by <a href="http://alexpareto.com">Alex</a></span>
+			<span class="credit pull-right">A small project made by <a href="http://alexpareto.com">Alex</a> 
+			and <a href="http://zacharydenham.me"> Zac</a> </span>
 		</div>
 	</div>
 </template>

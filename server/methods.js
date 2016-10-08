@@ -6,8 +6,22 @@
 //var spotifyApi = new SpotifyWebApi();
 Meteor.methods({
   'saveMusic' : function(data){
-    var _id = Shares.insert(data);
+    if (! this.userId) {
+      throw new Meteor.Error('saveMusic.unauthorized');
+    }
+
+    //public profile database id not saved in services so the user can't change it
+    var _id;
+    if( ! Meteor.user().shareProfile ){
+      _id = Shares.insert({ data : data });
+      Meteor.users.update(Meteor.userId(), {$set: {shareProfile: { _id : _id }}});
+    } else {
+      var shareId = Meteor.user().shareProfile._id;
+      Shares.update({ _id : shareId }, {$set: { data : data }});
+      _id = shareId;
+    }
     return _id;
+
   },
   'getTopTracks': function(length) {
   	//create instance of spotify API so we can the update access token

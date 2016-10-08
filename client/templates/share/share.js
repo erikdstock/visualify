@@ -1,7 +1,16 @@
 Template.Share.onCreated(function () {
+	this.ui = this.data.data;
 });
 
 Template.Share.onRendered(function () {
+});
+
+Template.Share.events({
+	'click .my-music-button' : function () {
+		var getUrl = window.location;
+		var baseUrl = getUrl.protocol + "//" + getUrl.host;
+		window.location = baseUrl;
+	}
 });
 
 /*****************************************************************************/
@@ -12,35 +21,40 @@ Template.Share.onRendered(function () {
  		return Session.get("finishedLoading");
  	},
  	getUserImage: function() {
- 		return Template.instance().data.userImage;
+ 		return Template.instance().ui.userImage;
  	},
  	getTop5ArtistsShort: function() {
- 		return Template.instance().data.topShortArtists;
+ 		return Template.instance().ui.topShortArtists;
  	},
  	getTop5TracksShort: function() {
- 		return Template.instance().data.topShortTracks;
+ 		return Template.instance().ui.topShortTracks;
  	},
  	getTop5ArtistsMedium: function() {
- 		return Template.instance().data.topMediumArtists;
+ 		return Template.instance().ui.topMediumArtists;
  	},
  	getTop5TracksMedium: function() {
- 		return Template.instance().data.topMediumTracks;
+ 		return Template.instance().ui.topMediumTracks;
  	},
  	getTop5ArtistsLong: function() {
- 		return Template.instance().data.topLongArtists;
+ 		return Template.instance().ui.topLongArtists;
  	},
  	getTop5TracksLong: function() {
- 		return Template.instance().data.topLongTracks;
+ 		return Template.instance().ui.topLongTracks;
  	},
  	userName: function() {
- 		return Template.instance().data.displayName;
+ 		return Template.instance().ui.displayName;
  	},
  	getBackgroundCSS: function() {
- 		var cssData = "url(" + Template.instance().data.bgArtist.image + ")";
+ 		var cssData = "url(" + Template.instance().ui.bgArtist.image + ")";
  		return cssData;
  	},
  	getBgArtist: function() {
- 		return Template.instance().data.bgArtist.name;
+ 		return Template.instance().ui.bgArtist.name;
+ 	},
+ 	getFirstName: function () {
+ 		var fullName = Template.instance().ui.displayName;
+ 		var firstName = fullName.split(" ")[0];
+ 		return firstName;
  	}
  })
 
