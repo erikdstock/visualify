@@ -27,13 +27,13 @@ if(Meteor.isClient){
         },
         og : {
         	title : function () {
-						return this.data().displayName + '\'s music';
+						return this.data().data.displayName + '\'s music';
 					},
 					image : function () {
-						return this.data().bgArtist.image;
+						return this.data().data.bgArtist.image;
 					},
 					description : function () {
-						return "My top artist for this month was " + this.data().topShortTracks[0].bandName + ". I'm not too surprised.";
+						return "My top artist for this month was " + this.data().data.topShortTracks[0].bandName + ". I'm not too surprised.";
 					}
         }
       }, action: function () {

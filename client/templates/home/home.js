@@ -241,7 +241,9 @@ Template.Home.onCreated(function () {
 				console.log(error.reason);
 				return;
 			}
-			
+
+			console.log(result);
+
 			var url = window.location.href + 'share/' + result;
 			Session.set("shareLink", url);
 		});

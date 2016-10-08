@@ -166,7 +166,7 @@ html>body .pageintro {
 	width: 130px;
 	height: 30px;
 	border-style: solid;
-	border-radius: 3.5px;
+	border-radius: 2px;
 	border-width: .9px;
 	font-weight: bold;
 	letter-spacing: -1.5px;
@@ -183,7 +183,7 @@ html>body .pageintro {
 .action-button:hover {
 	background-color: #FFFFFF;
 	border-color: #30E3CA;
-	border-width: .3px;
+	border-width: .9px;
 	color: #30E3CA;
 	cursor: pointer;
 }
