@@ -7,8 +7,9 @@ Template.Share.onRendered(function () {
 
 Template.Share.events({
 	'click .my-music-button' : function () {
-		event.preventDefault();
-		window.open("http://localhost.com", "_newtab")
+		var getUrl = window.location;
+		var baseUrl = getUrl.protocol + "//" + getUrl.host;
+		window.location = baseUrl;
 	}
 });
 

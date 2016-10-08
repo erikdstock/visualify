@@ -4,9 +4,9 @@ if(Meteor.isClient){
 	  defaults: { 
 	  	title: "visualify",
 	  	og: {
-	  		title: "Visualify",
+	  		title: "Who Is Your Binge-Artist?",
 	  		description: "my top artists and tracks",
-	  		image : "picture of my penis"
+	  		image: "https://i.scdn.co/image/214b1108d830f4426cb182cf742a409d72317cf6"
 	  	}
 	  }
 	});
@@ -26,15 +26,14 @@ if(Meteor.isClient){
         	return "visualify"; 
         },
         og : {
-        	title : function () {
-						return this.data().data.displayName + '\'s music';
-					},
-					image : function () {
-						return this.data().data.bgArtist.image;
-					},
-					description : function () {
-						return "My top artist for this month was " + this.data().data.topShortTracks[0].bandName + ". I'm not too surprised.";
-					}
+			image : function () {
+				return this.data().data.bgArtist.image;
+			},
+			description : function () {
+				return "My top artist this month was " + this.data().data.topShortTracks[0].bandName + 
+				". Click to see the rest of " + 
+				this.data().data.displayName.slit(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify";
+			}
         }
       }, action: function () {
       	this.render("Share");

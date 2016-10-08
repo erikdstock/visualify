@@ -17,7 +17,8 @@ Meteor.methods({
       Meteor.users.update(Meteor.userId(), {$set: {shareProfile: { _id : _id }}});
     } else {
       var shareId = Meteor.user().shareProfile._id;
-      _id = Shares.update({ _id : shareId }, {$set: { data : data }});
+      Shares.update({ _id : shareId }, {$set: { data : data }});
+      _id = shareId;
     }
     return _id;
 
