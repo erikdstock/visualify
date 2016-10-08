@@ -6,7 +6,8 @@ Template.Share.onRendered(function () {
 
 Template.Share.events({
 	'click .my-music-button' : function () {
-		window.location.href ="http://localhost:3000";
+		event.preventDefault();
+		window.open("http://localhost.com", "_newtab")
 	}
 });
 
