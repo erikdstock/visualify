@@ -4,6 +4,7 @@ if(Meteor.isClient){
 	  defaults: { 
 	  	title: "Visualify",
 	  	og: {
+	  		url: "https://beta.visualify.xyz",
 	  		title: "Visualify",
 	  		description: "my top artists and tracks",
 	  		image : "https://i.scdn.co/image/214b1108d830f4426cb182cf742a409d72317cf6"
@@ -26,6 +27,9 @@ if(Meteor.isClient){
         	return "Visualify"; 
         },
         og : {
+        	url : function () {
+        		return "https://beta.visualify.xyz/share/" + this.params._id;
+        	},
         	title : function () {
 				return "Who Is Your Binge-Artist?";
 			},
