@@ -18,9 +18,7 @@ if(Meteor.isClient){
 		      if (!Meteor.isClient || !this.data()) {
 		        return;
 		      }
-		      console.log('before this');
 		      data = this.data().data;
-		      console.log('after this');
 		      SEO.set({
 		        title : "Visualify",
 		        og : {
