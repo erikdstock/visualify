@@ -23,11 +23,14 @@ if(Meteor.isClient){
 		      data = this.data().data;
 		      SEO.set({
 		        title : "Visualify",
+		        meta : {
+		        	'fb:app_id' : "1787225631546656"
+		        },
 		        og : {
 		        	url : url,
 		        	title : "Who Is Your Binge-Artist?",
 					image : data.topShortArtists[0].smallImage,
-					description : "My top artist this month was " + data.topShortArtists[0].name + ". Click to see the rest of "  + data.displayName.split(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify"
+					description : data.displayName.split(" ")[0] + "\'s top artist this month was " + data.topShortArtists[0].name + ". Click to see the rest of "  + data.displayName.split(" ")[0] + "\'s Spotify top music and see YOUR top artists and songs with Visualify"
 		        }
 		      });
 		    }
