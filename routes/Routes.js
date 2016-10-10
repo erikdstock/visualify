@@ -5,6 +5,35 @@ if(Meteor.isClient){
 			twitter: false
 		}
 	});
+
+	Router.configure({
+	  layoutTemplate: 'MasterLayout',
+	  loadingTemplate: 'loading',
+	  notFoundTemplate: 'NotFound'
+	});
+
+	Router.map(function () {
+		return this.route('Home', {
+			path: '/',
+			onAfterAction: function () {
+				var url = window.location.href;
+				SEO.set({
+					'title' : 'Visualify',
+					meta : {
+						'title': 'Visualify',
+						'description' : 'Visualize your top artists and songs on Spotify with one click.'
+					},
+					og : {
+						type : 'website',
+						url : url,
+						title : 'Who Is Your Binge-Artist?',
+						image : '/images/visualify.png',
+						description : "Visualize your top artists and songs on Spotify with one click."
+					}
+				})
+			}
+		})
+	})
 	
 	Router.map(function() {
 		  return this.route('Share', {
@@ -31,7 +60,7 @@ if(Meteor.isClient){
 		      	'title' : "Visualify",
 		        meta : {
 		        	'title': 'Visualify',
-		        	'description' : "visualize your top artists and songs on spotify"
+		        	'description' : "Visualize your top artists and songs on Spotify with one click."
 		        },
 		        og : {
 		        	type: 'website',
