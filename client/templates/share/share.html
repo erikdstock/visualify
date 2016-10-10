@@ -9,7 +9,7 @@
 						<h1 class="vis-title">Visualify</h1>
 						<div class="userImage" style="background-image: url({{getUserImage}});"></div>
 						<h3> {{userName}}'s Music </h3>
-						<i class="fa fa-arrow-circle-o-down fa-4x"></i> 
+						<i class="fa fa-arrow-circle-o-down fa-4x"></i>
 						<h3 class="artistName">{{getBgArtist}}</h3>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 					{{> Trackshare}}
 				{{/each}}
 			</div>
-			<span class="credit pull-right">A project made by <a href="http://alexpareto.com">Alex</a> 
+			<span class="credit pull-right">A project made by <a href="http://alexpareto.com">Alex</a>
 			and <a href="http://zacharydenham.me"> Zac</a> </span>
 		</div>
 	</div>
@@ -74,6 +74,8 @@
 	<a href="{{link}}" target="_blank">
 	<div class="card card-inverse" style="background-image: url({{image}}); border-color: #fff;">
 		<div class="overlay">
+			<h3 class="card-title">{{name}}</h3>
+			<p class="card-text">By {{getBandName}}</p>
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
 		<div class="card-block">

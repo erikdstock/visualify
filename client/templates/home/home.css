@@ -101,7 +101,7 @@ html>body .pageintro {
 	padding: 20px;
 }
 
-.overlay    {  
+.overlay    {
   background:rgba(0,0,0,.75);
   text-align:center;
   height: inherit;
@@ -113,6 +113,8 @@ html>body .pageintro {
   -webkit-transition: opacity .3s ease;
   -moz-transition: opacity .3s ease;
   border-radius: inherit;
+  padding: 20px;
+  padding-top: 40px;
 }
 
 .card:hover .overlay {
@@ -121,7 +123,6 @@ html>body .pageintro {
 
 .overlay i {
 	color: #30E3CA;
-	padding-top: 95px;
 }
 
 

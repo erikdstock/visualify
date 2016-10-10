@@ -10,7 +10,7 @@
 							<div class="action-call">Share Your Music!</div>
 							{{#if shareLink}}
 									<div class="copy-confirm" style="{{#if copied}} opacity: 1; {{else}} opacity: 0; {{/if}}">
-										Share Link Copied To Your Clipboard! 
+										Share Link Copied To Your Clipboard!
 									</div>
 								<div class="btn btn-primary top-right facebook-share">
 									Facebook
@@ -23,7 +23,7 @@
 						<h1 class="vis-title">Visualify</h1>
 						<div class="userImage" style="background-image: url({{getUserImage}});"></div>
 						<h3> {{userName}}</h3>
-						<i class="fa fa-arrow-circle-o-down fa-4x"></i> 
+						<i class="fa fa-arrow-circle-o-down fa-4x"></i>
 						<h3 class="artistName">{{getBgArtist}}</h3>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 					{{> track}}
 				{{/each}}
 			</div>
-			<span class="credit pull-right">A project made by <a href="http://alexpareto.com">Alex</a> 
+			<span class="credit pull-right">A project made by <a href="http://alexpareto.com">Alex</a>
 			and <a href="http://zacharydenham.me"> Zac</a> </span>
 		</div>
 	</div>
@@ -91,6 +91,7 @@
 	<a href="{{getLink}}" target="_blank">
 	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
 		<div class="overlay">
+			<h3 class="card-title">{{name}}</h3>
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
 		<div class="card-block">
@@ -105,6 +106,8 @@
 	<a href="{{getLink}}" target="_blank">
 	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
 		<div class="overlay">
+			<h3 class="card-title">{{name}}</h3>
+			<p class="card-text">By {{getBandName}}</p>
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
 		<div class="card-block">
