@@ -22,7 +22,7 @@ if(Meteor.isClient){
 		      var data;
 		      // The SEO object is only available on the client.
 		      // Return if you define your routes on the server, too.
-		      if (!Meteor.isClient || !this.data()) {
+		      if (!Meteor.isClient || !this.data() || !Meteor.subscribe('shares').ready()) {
 		        return;
 		      }
 		      var url = window.location.href + 'share/' + this.params._id;
