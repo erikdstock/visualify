@@ -1,14 +1,4 @@
 if(Meteor.isClient){
-
-	SEO.config({
-            title: 'Manuel Schoebel - MVP Development',
-            meta: {
-                'description': 'Manuel Schoebel develops Minimal Viable Producs (MVP) for Startups'
-            },
-            og: {
-                'image': 'http://manuel-schoebel.com/images/authors/manuel-schoebel.jpg' 
-           }
-        });
 	
 	Router.map(function() {
 		  return this.route('Share', {
