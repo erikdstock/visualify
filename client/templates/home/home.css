@@ -165,8 +165,8 @@ html>body .pageintro {
 	right: 15px;
 	top: -30px;
 	width: 130px;
-	height: 30px;
-	font-size: .7em;
+	height: 35px;
+	font-size: .9em;
 	z-index: 10;
 }
 
@@ -174,10 +174,10 @@ html>body .pageintro {
 	text-align: center;
 	top: -30px;
 	right: 155px;
-	height: 30px;
+	height: 35px;
 	width: 130px;
 	position: fixed;
-	font-size: .7em;
+	font-size: .9em;
 	z-index: 10;
 }
 
@@ -188,6 +188,24 @@ html>body .pageintro {
 	z-index: -10;
 }
 
+.action-call {
+	top: -5px;
+	color: #000000;
+	position: fixed;
+	right: 145px;
+	z-index: 10;
+}
+
+.navigation {
+	background-color: rgba(255, 255, 255, 0.6);
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	height: 75px;
+	width: 300px;
+	z-index: 9;
+}
+
 .copy-confirm {
 	z-index: 10;
 	padding-left: 8px;
@@ -195,7 +213,7 @@ html>body .pageintro {
 	background-color:rgba(0, 0, 0, 0.6);
 	border-radius: 3px;
 	position: fixed;
-	top: 55px;
+	top: 60px;
 	right: 15px;
 	font-size: .8em;
 	-webkit-transition: all .5s ease;

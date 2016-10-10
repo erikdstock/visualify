@@ -18,11 +18,13 @@ if(Meteor.isClient){
 		      if (!Meteor.isClient || !this.data() || hello != 0) {
 		        return;
 		      }
+		      var url = window.location.href + 'share/' + this.params._id;
 		      console.log(hello);
 		      data = this.data().data;
 		      SEO.set({
 		        title : "Visualify",
 		        og : {
+		        	url: url,
 		        	title : "Who Is Your Binge-Artist?",
 					image : data.bgArtist.image,
 					description : "My top artist this month was " + data.topShortTracks[0].bandName + ". Click to see the rest of "  + data.displayName.split(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify"
