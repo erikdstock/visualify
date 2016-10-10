@@ -30,17 +30,15 @@ if(Meteor.isClient){
 		      SEO.set({
 		      	'title' : "Visualify",
 		        meta : {
-		        	'fb:app_id' : "1787225631546656",
 		        	'title': 'Visualify',
 		        	'description' : "visualize your top artists and songs on spotify"
 		        },
 		        og : {
-		        	url : url,
 		        	type: 'website',
+		        	url : url,
 		        	title : 'Who Is Your Binge-Artist?',
 					image : data.topShortArtists[0].image,
-					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s top music on Spotify and see YOUR top artists and songs with Visualify',
-					'fb:app_id' : "1787225631546656"
+					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s top music on Spotify and see YOUR top artists and songs with Visualify'
 		        }
 		      });
 		    }

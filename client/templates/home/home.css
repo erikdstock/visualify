@@ -229,3 +229,7 @@ html>body .pageintro {
     -moz-transition: all .5s ease;
     transition: all .5s ease;
 }
+
+.vis-title {
+  margin-top: calc(230px - 14vw);
+}
