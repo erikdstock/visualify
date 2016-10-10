@@ -12,8 +12,24 @@ if(Meteor.isClient){
 		      	b = Shares.find( { _id : _id } ).fetch();
 		        return b[0];
 		      },
-		    ondAfterAction: function() {
+		   onAfterAction: function() {
 		      var data;
+		      // The SEO object is only available on the client.
+		      // Return if you define your routes on the server, too.
+		      if (!Meteor.isClient || !this.data()) {
+		        return;
+		      }
+		      var url = window.location.href + 'share/' + this.params._id;
+		      data = this.data().data;
+		      SEO.set({
+		        title : "Visualify",
+		        og : {
+		        	url : url,
+		        	title : "Who Is Your Binge-Artist?",
+					image : data.bgArtist.image,
+					description : "My top artist this month was " + data.topShortTracks[0].bandName + ". Click to see the rest of "  + data.displayName.split(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify"
+		        }
+		      });
 		    }
 		  });
 		});
