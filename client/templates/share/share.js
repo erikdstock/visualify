@@ -7,6 +7,7 @@ Template.Share.onRendered(function () {
 
 Template.Share.events({
 	'click .my-music-button' : function () {
+		console.log()
 		var getUrl = window.location;
 		var baseUrl = getUrl.protocol + "//" + getUrl.host;
 		window.location = baseUrl;
