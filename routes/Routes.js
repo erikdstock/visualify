@@ -11,13 +11,14 @@ if(Meteor.isClient){
 		      	b = Shares.find( { _id : _id } ).fetch();
 		        return b[0];
 		      },
-		    onAfterAction: function() {
+		    ondAfterAction: function() {
 		      var data;
 		      // The SEO object is only available on the client.
 		      // Return if you define your routes on the server, too.
-		      if (!Meteor.isClient || !this.data()) {
+		      if (!Meteor.isClient || !this.data() || hello != 0) {
 		        return;
 		      }
+		      console.log(hello);
 		      data = this.data().data;
 		      SEO.set({
 		        title : "Visualify",

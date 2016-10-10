@@ -48,7 +48,6 @@ jparker:crypto-base64@0.1.0
 jparker:crypto-core@0.1.0
 jquery@1.11.8
 launch-screen@1.0.11
-lemmih:spiderable@1.0.4
 livedata@1.0.18
 localstorage@1.0.9
 logging@1.0.12
@@ -71,6 +70,7 @@ oauth@1.1.10
 oauth2@1.1.9
 observe-sequence@1.0.11
 okgrow:analytics@1.0.5
+ongoworks:spiderable@1.0.7
 ordered-dict@1.0.7
 pcel:loading@1.0.3
 promise@0.6.7

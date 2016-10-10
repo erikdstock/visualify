@@ -1,4 +1,5 @@
 <template name="Home">
+<input type="text" class="hide-me" id="copyTarget" value="link share" >
 	{{#if isLoaded}}
 
 	<div class="home">
@@ -6,8 +7,14 @@
 				<div class="description" style="background-image: {{getBackgroundCSS}};">
 					<div class="overlayTitle">
 						{{#if shareLink}}
-							<div class="action-button share-button">
-								Share Your Music
+								<div class="copy-confirm" style="{{#if copied}} opacity: 1; {{else}} opacity: 0; {{/if}}"> 
+									Share Link Copied To Your Clipboard! 
+								</div>
+							<div class="btn btn-primary top-right facebook-share">
+								Facebook
+							</div>
+							<div class="btn btn-primary link-share">
+								Copy Link
 							</div>
 						{{/if}}
 						<h1>Visualify</h1>

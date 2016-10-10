@@ -2,7 +2,7 @@
 /* Home: Event Handlers */
 /*****************************************************************************/
 Template.Home.events({
-  'click .share-button' : function() {
+  'click .facebook-share' : function() {
   	var url = Session.get("shareLink");
   	console.log(Session.get("shareLink"));
 		FB.ui({
@@ -11,7 +11,68 @@ Template.Home.events({
 	    href: url,
 		}, function(response){});
   },
+  'click .link-share' : function() {
+  	if(copyToClipboard(document.getElementById("copyTarget"))) {
+  		document.getSelection().removeAllRanges();
+  		Session.set('copied', true);
+  		setTimeout(function(){
+  			Session.set('copied', false);
+  		}, 1300);
+  	} else {
+  		window.location.href = Session.get("shareLink");
+  	}
+  },
 });
+
+function copyToClipboard(elem) {
+	  // create hidden text element, if it doesn't already exist
+    var targetId = "copy-link";
+    var isInput = elem.tagName === "INPUT" || elem.tagName === "TEXTAREA";
+    var origSelectionStart, origSelectionEnd;
+    if (isInput) {
+        // can just use the original source element for the selection and copy
+        target = elem;
+        origSelectionStart = elem.selectionStart;
+        origSelectionEnd = elem.selectionEnd;
+    } else {
+        // must use a temporary form element for the selection and copy
+        target = document.getElementById(targetId);
+        if (!target) {
+            var target = document.createElement("textarea");
+            target.style.position = "absolute";
+            target.style.left = "-9999px";
+            target.style.top = "0";
+            target.id = targetId;
+            document.body.appendChild(target);
+        }
+        target.textContent = elem.textContent;
+    }
+    // select the content
+    var currentFocus = document.activeElement;
+    target.focus();
+    target.setSelectionRange(0, target.value.length);
+    
+    // copy the selection
+    var succeed;
+    try {
+    	  succeed = document.execCommand("copy");
+    } catch(e) {
+        succeed = false;
+    }
+    // restore original focus
+    if (currentFocus && typeof currentFocus.focus === "function") {
+        currentFocus.focus();
+    }
+    
+    if (isInput) {
+        // restore prior selection
+        elem.setSelectionRange(origSelectionStart, origSelectionEnd);
+    } else {
+        // clear temporary content
+        target.textContent = "";
+    }
+    return succeed;
+}
 
 /*****************************************************************************/
 /* Home: Helpers */
@@ -94,6 +155,8 @@ Template.Home.helpers({
 	getBgArtist: function() {
 		//return the background artist name
 		return Session.get("bgArtist").name;
+	}, copied: function() {
+		return Session.get("copied");
 	}
 });
 
@@ -241,18 +304,15 @@ Template.Home.onCreated(function () {
 				console.log(error.reason);
 				return;
 			}
-
-			console.log(result);
-
 			var url = window.location.href + 'share/' + result;
 			Session.set("shareLink", url);
+			document.getElementById("copyTarget").value = Session.get("shareLink");
 		});
 
 	});
 });
 
 Template.Home.onRendered(function () {
-	
 });
 
 Template.Home.onDestroyed(function () {
