@@ -232,5 +232,9 @@ html>body .pageintro {
 }
 
 .vis-title {
-  margin-top: calc(230px - 14vw);
+  margin-top: calc(140px - 10vw);
+}
+
+.card-text {
+	margin-top: -35px
 }
