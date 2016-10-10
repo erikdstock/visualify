@@ -26,7 +26,7 @@ if(Meteor.isClient){
 		        og : {
 		        	url : url,
 		        	title : "Who Is Your Binge-Artist?",
-					image : data.bgArtist.image,
+					image : data.topShortArtists[0].smallImage,
 					description : "My top artist this month was " + data.topShortTracks[0].bandName + ". Click to see the rest of "  + data.displayName.split(" ")[0] + "\'s top music and find out YOUR top artists and songs on Visualify"
 		        }
 		      });
