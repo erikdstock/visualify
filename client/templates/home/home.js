@@ -190,7 +190,7 @@ Template.Home.onCreated(function () {
 	//load the facebook SDK
 	window.fbAsyncInit = function() {
 	    FB.init({
-	      appId      : '318147065215923',
+	      appId      : '1787225631546656',
 	      xfbml      : true,
 	      version    : 'v2.8'
 	    });
