@@ -67,11 +67,11 @@ if(Meteor.isClient){
 		        og : {
 		        	type: 'website',
 		        	url : url,
-		        	title : 'Who Is Your Binge-Artist?',
+		        	title : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Who\'s Your Spotify Binge-Artist? Click to find out!',
 					image : data.ogImage.url,
 					'image:width' : data.ogImage.width,
 					'image:height' : data.ogImage.height,
-					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s favorite music on Spotify and see YOUR top artists and songs with Visualify'
+					description : "With one click, Visualify displays your favorite Music on Spotify"
 		        }
 		      });
 		    }
