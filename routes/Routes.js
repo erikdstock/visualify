@@ -68,9 +68,9 @@ if(Meteor.isClient){
 		        	type: 'website',
 		        	url : url,
 		        	title : 'Who Is Your Binge-Artist?',
-					image : "https://google.com",
-					'image:width' : "450",
-					'image:height' : "600",
+					image : data.ogImage.url,
+					'image:width' : data.ogImage.width,
+					'image:height' : data.ogImage.height,
 					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s top music on Spotify and see YOUR top artists and songs with Visualify'
 		        }
 		      });
