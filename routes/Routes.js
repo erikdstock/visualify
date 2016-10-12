@@ -54,8 +54,10 @@ if(Meteor.isClient){
 		      if (!Meteor.isClient || !this.data() || !Meteor.subscribe('shares').ready()) {
 		        return;
 		      }
-		      var url = window.location.href + 'share/' + this.params._id;
+		      var url = window.location.href;
 		      data = this.data().data;
+		      console.log("from the route");
+		      console.log(data.ogImage);
 		      SEO.set({
 		      	'title' : "Visualify",
 		        meta : {
@@ -66,7 +68,9 @@ if(Meteor.isClient){
 		        	type: 'website',
 		        	url : url,
 		        	title : 'Who Is Your Binge-Artist?',
-					image : data.topShortArtists[0].image,
+					image : "https://google.com",
+					'image:width' : "450",
+					'image:height' : "600",
 					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s top music on Spotify and see YOUR top artists and songs with Visualify'
 		        }
 		      });

@@ -281,7 +281,7 @@ Template.Home.onCreated(function () {
 
 		for(var i = 0; i < 5; i++){
 			//artists
-			relevantData.topShortArtists.push( { name : template.topShortArtists.curValue[i].name, smallImage : template.topShortArtists.curValue[i].images[1].url, image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
+			relevantData.topShortArtists.push( { name : template.topShortArtists.curValue[i].name, image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
 			relevantData.topMediumArtists.push( { name : template.topMediumArtists.curValue[i].name, image : template.topMediumArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify} );
 			relevantData.topLongArtists.push( { name : template.topLongArtists.curValue[i].name, image : template.topLongArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify});
 
@@ -292,6 +292,14 @@ Template.Home.onCreated(function () {
 
 		var bgImageNum = Math.floor((Math.random() * 11));
 
+		var myTopImage = template.topShortArtists.curValue[0].images[0];
+		relevantData.ogImage = {}
+		relevantData.ogImage.url = myTopImage.url;
+		relevantData.ogImage.width = myTopImage.width;
+		relevantData.ogImage.height = myTopImage.height;
+
+		console.log("from home");
+		console.log(relevantData.ogImage);
 		relevantData.bgArtist = {};
 		relevantData.bgArtist.image = template.topLongArtists.get()[bgImageNum].images[0].url;
 		relevantData.bgArtist.name = template.topLongArtists.get()[bgImageNum].name;
