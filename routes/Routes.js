@@ -71,7 +71,7 @@ if(Meteor.isClient){
 					image : data.ogImage.url,
 					'image:width' : data.ogImage.width,
 					'image:height' : data.ogImage.height,
-					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s top music on Spotify and see YOUR top artists and songs with Visualify'
+					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s favorite music on Spotify and see YOUR top artists and songs with Visualify'
 		        }
 		      });
 		    }
