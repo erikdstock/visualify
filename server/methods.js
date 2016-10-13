@@ -17,6 +17,15 @@ Meteor.methods({
       Meteor.users.update(Meteor.userId(), {$set: {shareProfile: { _id : _id }}});
     } else {
       var shareId = Meteor.user().shareProfile._id;
+      var oldData = Shares.find({_id : shareId}).fetch()[0].data;
+      var now = new Date();
+      var difference = Math.abs(now.getTime() - oldData.createdAt.getTime());
+
+      //the data can only update every three hours
+      if( ( difference / 1000  ) <  60 ){
+        return shareId;
+      }
+
       Shares.update({ _id : shareId }, {$set: { data : data }});
       _id = shareId;
     }

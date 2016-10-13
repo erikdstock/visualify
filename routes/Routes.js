@@ -5,6 +5,35 @@ if(Meteor.isClient){
 			twitter: false
 		}
 	});
+
+	Router.configure({
+	  layoutTemplate: 'MasterLayout',
+	  loadingTemplate: 'loading',
+	  notFoundTemplate: 'NotFound'
+	});
+
+	Router.map(function () {
+		return this.route('Home', {
+			path: '/',
+			onAfterAction: function () {
+				var url = window.location.href;
+				SEO.set({
+					'title' : 'Visualify',
+					meta : {
+						'title': 'Visualify',
+						'description' : 'Visualize your top artists and songs on Spotify with one click.'
+					},
+					og : {
+						type : 'website',
+						url : url,
+						title : 'Who Is Your Binge-Artist?',
+						image : '/images/visualify.png',
+						description : "Visualize your top artists and songs on Spotify with one click."
+					}
+				})
+			}
+		})
+	})
 	
 	Router.map(function() {
 		  return this.route('Share', {
@@ -25,20 +54,24 @@ if(Meteor.isClient){
 		      if (!Meteor.isClient || !this.data() || !Meteor.subscribe('shares').ready()) {
 		        return;
 		      }
-		      var url = window.location.href + 'share/' + this.params._id;
+		      var url = window.location.href;
 		      data = this.data().data;
+		      console.log("from the route");
+		      console.log(data.ogImage);
 		      SEO.set({
 		      	'title' : "Visualify",
 		        meta : {
 		        	'title': 'Visualify',
-		        	'description' : "visualize your top artists and songs on spotify"
+		        	'description' : "Visualize your top artists and songs on Spotify with one click."
 		        },
 		        og : {
 		        	type: 'website',
 		        	url : url,
-		        	title : 'Who Is Your Binge-Artist?',
-					image : data.topShortArtists[0].image,
-					description : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Click to see the rest of '  + data.displayName.split(' ')[0] + '\'s top music on Spotify and see YOUR top artists and songs with Visualify'
+		        	title : data.displayName.split(' ')[0] + '\'s top artist this month was ' + data.topShortArtists[0].name + '. Who\'s Your Spotify Binge-Artist? Click to find out!',
+					image : data.ogImage.url,
+					'image:width' : data.ogImage.width,
+					'image:height' : data.ogImage.height,
+					description : "With one click, Visualify displays your favorite Music on Spotify"
 		        }
 		      });
 		    }
