@@ -140,7 +140,7 @@ Template.Home.helpers({
 	},
 	getBackgroundCSS: function() {
 		//get a random artist to be the background
-		var bgImageNum = Math.floor((Math.random() * 11));
+		var bgImageNum = Math.floor((Math.random() * 6));
 
 
 		//get the random artist from the top long artists and put it in css data
@@ -290,7 +290,7 @@ Template.Home.onCreated(function () {
 			relevantData.topLongTracks.push({ name : template.topLongTracks.curValue[i].name, image : template.topLongTracks.curValue[i].album.images[0].url, link : template.topLongTracks.curValue[i].external_urls.spotify, bandName : template.topLongTracks.curValue[i].artists[0].name});	
 		}
 
-		var bgImageNum = Math.floor((Math.random() * 11));
+		var bgImageNum = Math.floor((Math.random() * 6));
 
 		var myTopImage = template.topShortArtists.curValue[0].images[0];
 		relevantData.ogImage = {}
