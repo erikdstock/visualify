@@ -282,7 +282,7 @@ Template.Home.onCreated(function () {
 		for(var i = 0; i < 5; i++){
 			//artists
 			relevantData.topShortArtists.push( { name : template.topShortArtists.curValue[i].name, image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
-			relevantData.topMediumArtists.push( { name : template.topMediumArtists.curValue[i].name, image : template.topMediumArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify} );
+			relevantData.topMediumArtists.push( { name : template.topMediumArtists.curValue[i].name, image : template.topMediumArtists.curValue[i].images[0].url, link : template.topMediumArtists.curValue[i].external_urls.spotify} );
 			relevantData.topLongArtists.push( { name : template.topLongArtists.curValue[i].name, image : template.topLongArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify});
 
 			relevantData.topShortTracks.push({ name : template.topShortTracks.curValue[i].name, image : template.topShortTracks.curValue[i].album.images[0].url, link : template.topShortTracks.curValue[i].external_urls.spotify, bandName : template.topShortTracks.curValue[i].artists[0].name});
