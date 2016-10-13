@@ -304,7 +304,9 @@ Template.Home.onCreated(function () {
 				console.log(error.reason);
 				return;
 			}
-			var url = window.location.href + 'share/' + result;
+			var getUrl = window.location;
+			var baseUrl = getUrl.protocol + "//" + getUrl.host;
+			var url = baseUrl + 'share/' + result;
 			Session.set("shareLink", url);
 			document.getElementById("copyTarget").value = Session.get("shareLink");
 		});
