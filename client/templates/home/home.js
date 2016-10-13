@@ -140,7 +140,7 @@ Template.Home.helpers({
 	},
 	getBackgroundCSS: function() {
 		//get a random artist to be the background
-		var bgImageNum = Math.floor((Math.random() * 11));
+		var bgImageNum = Math.floor((Math.random() * 6));
 
 
 		//get the random artist from the top long artists and put it in css data
@@ -190,7 +190,7 @@ Template.Home.onCreated(function () {
 	//load the facebook SDK
 	window.fbAsyncInit = function() {
 	    FB.init({
-	      appId      : '318147065215923',
+	      appId      : '1787225631546656',
 	      xfbml      : true,
 	      version    : 'v2.8'
 	    });
@@ -281,8 +281,8 @@ Template.Home.onCreated(function () {
 
 		for(var i = 0; i < 5; i++){
 			//artists
-			relevantData.topShortArtists.push( { name : template.topShortArtists.curValue[i].name, smallImage : template.topShortArtists.curValue[i].images[1].url, image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
-			relevantData.topMediumArtists.push( { name : template.topMediumArtists.curValue[i].name, image : template.topMediumArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify} );
+			relevantData.topShortArtists.push( { name : template.topShortArtists.curValue[i].name, image : template.topShortArtists.curValue[i].images[0].url, link : template.topShortArtists.curValue[i].external_urls.spotify } );
+			relevantData.topMediumArtists.push( { name : template.topMediumArtists.curValue[i].name, image : template.topMediumArtists.curValue[i].images[0].url, link : template.topMediumArtists.curValue[i].external_urls.spotify} );
 			relevantData.topLongArtists.push( { name : template.topLongArtists.curValue[i].name, image : template.topLongArtists.curValue[i].images[0].url, link : template.topLongArtists.curValue[i].external_urls.spotify});
 
 			relevantData.topShortTracks.push({ name : template.topShortTracks.curValue[i].name, image : template.topShortTracks.curValue[i].album.images[0].url, link : template.topShortTracks.curValue[i].external_urls.spotify, bandName : template.topShortTracks.curValue[i].artists[0].name});
@@ -290,8 +290,16 @@ Template.Home.onCreated(function () {
 			relevantData.topLongTracks.push({ name : template.topLongTracks.curValue[i].name, image : template.topLongTracks.curValue[i].album.images[0].url, link : template.topLongTracks.curValue[i].external_urls.spotify, bandName : template.topLongTracks.curValue[i].artists[0].name});	
 		}
 
-		var bgImageNum = Math.floor((Math.random() * 11));
+		var bgImageNum = Math.floor((Math.random() * 6));
 
+		var myTopImage = template.topShortArtists.curValue[0].images[0];
+		relevantData.ogImage = {}
+		relevantData.ogImage.url = myTopImage.url;
+		relevantData.ogImage.width = myTopImage.width;
+		relevantData.ogImage.height = myTopImage.height;
+
+		console.log("from home");
+		console.log(relevantData.ogImage);
 		relevantData.bgArtist = {};
 		relevantData.bgArtist.image = template.topLongArtists.get()[bgImageNum].images[0].url;
 		relevantData.bgArtist.name = template.topLongArtists.get()[bgImageNum].name;

@@ -71,11 +71,10 @@
 </template>
 
 <template name="Artistshare" class="artists">
-	<a href="{{link}}" target="_blank">
-	<div class="card card-inverse" style="background-image: url({{image}}); border-color: #fff;">
+	<a href="{{getLink}}" target="_blank">
+	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
 		<div class="overlay">
 			<h3 class="card-title">{{name}}</h3>
-			<p class="card-text">By {{getBandName}}</p>
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
 		<div class="card-block">
@@ -87,9 +86,11 @@
 </template>
 
 <template name="Trackshare">
-	<a href="{{link}}" target="_blank">
-	<div class="card card-inverse" style="background-image: url({{image}}); border-color: #fff;">
+	<a href="{{getLink}}" target="_blank">
+	<div class="card card-inverse" style="background-image: url({{getImage}}); border-color: #fff;">
 		<div class="overlay">
+			<h3 class="card-title">{{name}}</h3>
+			<p class="card-text">By {{bandName}}</p>
 			<i class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
 		</div>
 		<div class="card-block">
