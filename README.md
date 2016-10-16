@@ -16,3 +16,7 @@ Spotify releases information about user's listening habits once a year in Decemb
 ## Contributors
 
 Want to contribute? Start a branch and make a PR!
+
+## Creators
+
+A project by [Alex Pareto](https://alexpareto.com) and [Zac Denham](http://zacharydenham.me).
