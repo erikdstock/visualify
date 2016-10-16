@@ -6,7 +6,6 @@
 
 Visualify is a web app built on Meteor.js, Bootstrap 4, the Facebook API, and the Spotify API. After authorizing, users can view their most listened to artists and tracks from various timeframes in a visually attractive style. The site went viral on Facebook and has recieved acclaim from [Product Hunt](https://www.producthunt.com/tech/visualify) and [Lifehacker](http://lifehacker.com/visualify-shows-off-your-spotify-listening-habits-trac-1787766510). 
 
-![Gif](http://i.imgur.com/unPR1bN.mp4)
 ![Gif](http://i.imgur.com/32KW8Oy.jpg)
 ![Gif](http://i.imgur.com/n7uPvXH.gif)
 
